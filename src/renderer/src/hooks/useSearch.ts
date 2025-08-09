@@ -1,10 +1,10 @@
-import useCode from '@renderer/hooks/useCode'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 import { codes } from '@renderer/data'
+import { useStore } from '@renderer/store/useStore'
 
 export default () => {
-  const { setData } = useCode()
-  const [search, setSearch] = useState('')
+  const setData = useStore((state) => state.setData)
+  const { search, setSearch } = useStore((state) => state)
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
     setData(

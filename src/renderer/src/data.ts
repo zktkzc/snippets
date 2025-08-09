@@ -5,30 +5,30 @@ export interface DataType {
 export const codes = [
   {
     id: 1,
-    content: 'dansalsn nlaskndvl dnvls adsas.'
+    content: 'In minim est eu enim eu fugiat sint eiusmod eu.'
   },
   {
     id: 2,
-    content: 'dnaslvknas nlvaksdnlknads nvlkadsvnalsvndlksanvklsa.'
+    content: 'Esse labore veniam esse incididunt nisi anim culpa velit ad in laboris elit non magna.'
   },
   {
     id: 3,
-    content: 'dnalfanv nvasldvknlsadn lnvdkslanlsa.'
+    content: 'Enim labore officia voluptate laborum irure.'
   },
   {
     id: 4,
-    content: 'nlacdnvl danlvn dls.'
+    content: 'Quis ipsum dolor mollit cillum ex et velit nulla et culpa id nisi ipsum ad.'
   },
   {
     id: 5,
-    content: 'fanlkvnasl nlvasdnl nalsnl.'
+    content: 'Amet enim consequat proident qui exercitation irure quis ullamco veniam non non sit nulla duis.'
   },
   {
     id: 6,
-    content: 'nladnl dnl ndl kkndln nlnl.'
+    content: 'In minim esse velit do pariatur nisi officia reprehenderit.'
   },
   {
     id: 7,
-    content: 'adnval nvlasknvla dnaslvn.'
+    content: 'Magna reprehenderit sit magna in esse consequat veniam.'
   }
 ] as DataType[]

@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import useCode from '@renderer/hooks/useCode'
+import { useStore } from '@renderer/store/useStore'
 
 export default () => {
-  const { data } = useCode()
+  const { data, setData } = useStore((state) => state)
+  const setSearch = useStore((state) => state.setSearch)
+
   const [id, setId] = useState<number>(0)
   const handleKeyEvent = useCallback(
     (e: KeyboardEvent) => {
@@ -29,9 +31,11 @@ export default () => {
     [data, id]
   )
 
-  function selectItem(id: number) {
+  async function selectItem(id: number) {
     const content = data.find((item) => item.id === id)?.content
-    if (content) navigator.clipboard.writeText(content)
+    if (content) await navigator.clipboard.writeText(content)
+    setData([])
+    setSearch('')
     window.api.hideWindow()
   }
 
