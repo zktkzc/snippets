@@ -1,5 +1,5 @@
-import Search from '@renderer/components/Search'
-import Result from '@renderer/components/Result'
+import Search from '@renderer/components/Search/Search'
+import Result from '@renderer/components/Result/Result'
 import { CodeContext } from '@renderer/context/CodeContext'
 import { useState } from 'react'
 import { DataType } from '@renderer/data'
