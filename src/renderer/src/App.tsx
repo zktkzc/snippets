@@ -1,16 +1,13 @@
 import Search from '@renderer/components/Search/Search'
 import Result from '@renderer/components/Result/Result'
-import { CodeContext } from '@renderer/context/CodeContext'
-import { useState } from 'react'
-import { DataType } from '@renderer/data'
+import { CodeProvider } from '@renderer/context/CodeContext'
 
 function App(): React.JSX.Element {
-  const [data, setData] = useState<DataType[]>([])
   return (
-    <CodeContext.Provider value={{ data, setData }}>
+    <CodeProvider>
       <Search />
       <Result />
-    </CodeContext.Provider>
+    </CodeProvider>
   )
 }
 

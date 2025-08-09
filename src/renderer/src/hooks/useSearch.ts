@@ -8,9 +8,11 @@ export default () => {
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
     setData(
-      codes.filter((code) =>
-        code.content.toLowerCase().includes(e.target.value.toLowerCase() || '@@@')
-      )
+      codes
+        .filter((code) =>
+          code.content.toLowerCase().includes(e.target.value.toLowerCase() || '@@@')
+        )
+        .splice(0, 8)
     )
   }
 

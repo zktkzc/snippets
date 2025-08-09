@@ -9,26 +9,32 @@ export default () => {
       if (data.length === 0) return
       switch (e.code) {
         case 'ArrowUp':
-          setId(id => {
+          setId((id) => {
             const index = data.findIndex((item) => item.id === id)
             return data[index - 1]?.id || data[data.length - 1].id
           })
           break
         case 'ArrowDown':
-          setId(id => {
+          setId((id) => {
             const index = data.findIndex((item) => item.id === id)
             return data[index + 1]?.id || data[0].id
           })
           break
         case 'Enter': {
-          const content = data.find((item) => item.id === id)?.content
-          if (content) navigator.clipboard.writeText(content)
+          selectItem(id)
           break
         }
       }
     },
     [data, id]
   )
+
+  function selectItem(id: number) {
+    const content = data.find((item) => item.id === id)?.content
+    if (content) navigator.clipboard.writeText(content)
+    window.api.hideWindow()
+  }
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyEvent)
     return () => {
@@ -39,6 +45,7 @@ export default () => {
 
   return {
     data,
-    id
+    id,
+    selectItem
   }
 }
