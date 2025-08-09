@@ -1,23 +1,31 @@
-import { app, BrowserWindow, dialog, globalShortcut } from 'electron'
+import { app, BrowserWindow, globalShortcut, ipcMain, IpcMainInvokeEvent } from 'electron'
+
+const config = {
+  search: ''
+}
 
 export const registerShortCut = (win: BrowserWindow) => {
-  app.whenReady().then(() => {
-    let ret = globalShortcut.register('CommandOrControl+Shift+;', () => {
-      win.center()
-      win.show()
-    })
-
-    ret = globalShortcut.register('Escape', () => {
-      if (win.isVisible()) win.hide()
-    })
-
-    if (!ret) {
-      dialog.showErrorBox('温馨提示', '快捷键注册失败')
+  ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, type: 'search', shortCut: string) => {
+    switch (type) {
+      case 'search':
+        config.search = shortCut
+        return registerSearchShortCut(win, shortCut)
     }
   })
+}
 
-  app.on('will-quit', () => {
-    // 注销所有快捷键
-    globalShortcut.unregisterAll()
+function registerSearchShortCut(win: BrowserWindow, shortCut: string) {
+  return globalShortcut.register(shortCut, () => {
+    if (win.isVisible()) {
+      win.hide()
+    } else {
+      win.center()
+      win.show()
+    }
   })
 }
+
+app.on('will-quit', () => {
+  // 注销所有快捷键
+  globalShortcut.unregisterAll()
+})
