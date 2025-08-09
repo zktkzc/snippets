@@ -3,11 +3,11 @@ import classNames from 'classnames'
 import useCodeSelect from '@renderer/hooks/useCodeSelect'
 
 export default function Result() {
-  const { data, currentIndex } = useCodeSelect()
+  const { data, id } = useCodeSelect()
   return (
     <main>
-      {data.map((item, index) => (
-        <div key={item.id} className={classNames({ active: currentIndex === index })}>
+      {data.map((item) => (
+        <div key={item.id} className={classNames({ active: item.id === id })}>
           {item.content}
         </div>
       ))}

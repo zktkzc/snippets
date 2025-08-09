@@ -3,24 +3,31 @@ import useCode from '@renderer/hooks/useCode'
 
 export default () => {
   const { data } = useCode()
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [id, setId] = useState<number>(0)
   const handleKeyEvent = useCallback(
     (e: KeyboardEvent) => {
       if (data.length === 0) return
       switch (e.code) {
         case 'ArrowUp':
-          setCurrentIndex((pre) => (pre - 1 < 0 ? data.length - 1 : pre - 1))
+          setId(id => {
+            const index = data.findIndex((item) => item.id === id)
+            return data[index - 1]?.id || data[data.length - 1].id
+          })
           break
         case 'ArrowDown':
-          setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
+          setId(id => {
+            const index = data.findIndex((item) => item.id === id)
+            return data[index + 1]?.id || data[0].id
+          })
           break
-        case 'Enter':
-          console.log(data[currentIndex].content)
-          navigator.clipboard.writeText(data[currentIndex].content)
+        case 'Enter': {
+          const content = data.find((item) => item.id === id)?.content
+          if (content) navigator.clipboard.writeText(content)
           break
+        }
       }
     },
-    [data, currentIndex]
+    [data, id]
   )
   useEffect(() => {
     document.addEventListener('keydown', handleKeyEvent)
@@ -28,10 +35,10 @@ export default () => {
       document.removeEventListener('keydown', handleKeyEvent)
     }
   }, [handleKeyEvent])
-  useEffect(() => setCurrentIndex(0), [data])
+  useEffect(() => setId(1), [data])
 
   return {
     data,
-    currentIndex
+    id
   }
 }
