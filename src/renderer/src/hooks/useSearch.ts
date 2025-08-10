@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback } from 'react'
+import { ChangeEvent } from 'react'
 import { codes } from '@renderer/data'
 import { useStore } from '@renderer/store/useStore'
 
@@ -16,18 +16,8 @@ export default () => {
     )
   }
 
-  const handleInputKeyDown = useCallback((e: KeyboardEvent) => {
-    switch (e.code) {
-      case 'ArrowUp':
-      case 'ArrowDown':
-        e.preventDefault()
-        break
-    }
-  }, [])
-
   return {
     search,
-    handleSearch,
-    handleInputKeyDown
+    handleSearch
   }
 }

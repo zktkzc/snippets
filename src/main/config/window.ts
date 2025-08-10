@@ -2,17 +2,15 @@ import { is } from '@electron-toolkit/utils'
 import { BrowserWindow, shell } from 'electron'
 import { join } from 'path'
 import icon from '../../../resources/icon.png?asset'
-import * as ipc from './ipc'
+import * as ipc from '../code/ipc'
 
 export function createWindow(): BrowserWindow {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 400,
+  const win = new BrowserWindow({
+    width: 600,
+    height: 500,
     center: true,
     show: false,
-    frame: false,
-    transparent: true,
     alwaysOnTop: true,
     autoHideMenuBar: true,
     resizable: false,
@@ -23,13 +21,13 @@ export function createWindow(): BrowserWindow {
     }
   })
 
-  // mainWindow.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
-  mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
+  win.on('ready-to-show', () => {
+    win.show()
   })
 
-  mainWindow.webContents.setWindowOpenHandler((details) => {
+  win.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
@@ -37,10 +35,10 @@ export function createWindow(): BrowserWindow {
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
+    win.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
+    win.loadFile(join(__dirname, '../renderer/index.html'))
   }
 
-  return mainWindow
+  return win
 }
