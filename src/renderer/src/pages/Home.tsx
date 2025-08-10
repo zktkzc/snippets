@@ -1,11 +1,11 @@
 import Search from '@renderer/components/Search/Search'
 import Result from '@renderer/components/Result/Result'
-import useShortCut from './hooks/useShortCut'
-import Error from './components/Error'
+import useShortCut from '@renderer/hooks/useShortCut'
+import Error from '@renderer/components/Error'
 import { MutableRefObject, useEffect, useRef } from 'react'
-import useIgnoreMouseEvents from './hooks/useIgnoreMouseEvents'
+import useIgnoreMouseEvents from '@renderer/hooks/useIgnoreMouseEvents'
 
-function App(): React.JSX.Element {
+function Home(): React.JSX.Element {
   const { register } = useShortCut()
   register('search', 'CommandOrControl+Shift+;')
 
@@ -24,4 +24,4 @@ function App(): React.JSX.Element {
   )
 }
 
-export default App
+export default Home
