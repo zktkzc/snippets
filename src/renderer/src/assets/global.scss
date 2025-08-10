@@ -1,6 +1,10 @@
 body {
 }
 
+* {
+  opacity: 0.995;
+}
+
 .drag {
   -webkit-app-region: drag;
 }

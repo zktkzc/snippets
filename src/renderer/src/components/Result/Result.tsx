@@ -1,11 +1,11 @@
 import './style.scss'
 import classNames from 'classnames'
-import useCodeSelect from '@renderer/hooks/useCodeSelect'
+import useSelect from '@renderer/hooks/useCodeSelect'
 
 export default function Result() {
-  const { data, id, selectItem } = useCodeSelect()
+  const { data, id, selectItem } = useSelect()
   return (
-    <main>
+    <main className="result">
       {data.map((item) => (
         <div
           key={item.id}

@@ -1,10 +1,10 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useCallback } from 'react'
 import { codes } from '@renderer/data'
 import { useStore } from '@renderer/store/useStore'
 
 export default () => {
-  const setData = useStore((state) => state.setData)
-  const { search, setSearch } = useStore((state) => state)
+  const { search, setSearch, setData } = useStore((state) => state)
+
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
     setData(
@@ -16,8 +16,18 @@ export default () => {
     )
   }
 
+  const handleInputKeyDown = useCallback((e: KeyboardEvent) => {
+    switch (e.code) {
+      case 'ArrowUp':
+      case 'ArrowDown':
+        e.preventDefault()
+        break
+    }
+  }, [])
+
   return {
     search,
-    handleSearch
+    handleSearch,
+    handleInputKeyDown
   }
 }

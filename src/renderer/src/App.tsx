@@ -8,11 +8,11 @@ function App(): React.JSX.Element {
   register('search', 'CommandOrControl+Shift+;')
 
   return (
-    <>
+    <main className="relative">
       <Error />
       <Search />
       <Result />
-    </>
+    </main>
   )
 }
 
