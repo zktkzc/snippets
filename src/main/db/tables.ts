@@ -25,9 +25,13 @@ for (let i = 0; i < 10; i++) {
     insert into categories(name, created_at) values
         ('${name}', datetime());
     `)
-}
 
-// db.exec(`
-// insert into contents(title, content, category_id, created_at) values
-//     ('react', 'zustand', 1, datetime());
-// `)
+  for (let j = 1; j < 10; j++) {
+    const title = Random.title(5, 10)
+    const content = Random.paragraph(5, 10)
+    db.exec(`
+      insert into contents(title, content, category_id, created_at) values
+          ('${title}', '${content}', ${i}, datetime());
+      `)
+  }
+}

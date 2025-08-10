@@ -1,18 +1,27 @@
-import { Outlet, useLoaderData } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import './style.scss'
-import { Add, DatabaseSetting, FolderClose } from '@icon-park/react'
+import { Add, DatabaseSetting } from '@icon-park/react'
+import { useEffect } from 'react'
 
 export default function Category() {
   const categories = useLoaderData() as CategoryType[]
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    navigate(`/config/category/contentList/${categories[0]?.id}`)
+  }, [categories])
 
   return (
     <main className="category-page">
       <div className="categories">
         {categories.map((category) => (
-          <div key={category.id} className="item">
-            <FolderClose theme="outline" size={12} strokeWidth={3} />
+          <NavLink
+            to={`/config/category/contentList/${category.id}`}
+            key={category.id}
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             {category.name}
-          </div>
+          </NavLink>
         ))}
       </div>
       <div className="nav">

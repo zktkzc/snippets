@@ -1,0 +1,26 @@
+.content-page {
+    @apply h-screen text-sm text-slate-700;
+    display: grid;
+    grid-template: 'list content' auto/150px auto;
+
+    .list {
+        @apply bg-slate-50 border-r cursor-pointer;
+        grid-area: list;
+
+        a {
+            @apply truncate block py-1 px-1;
+
+            &:hover {
+                @apply bg-orange-300 text-white mx-1 rounded-md;
+            }
+            
+            &.active {
+                @apply bg-orange-500 text-white mx-1 rounded-md;
+            }
+        }
+    }
+
+    .content {
+        grid-area: content;
+    }
+}

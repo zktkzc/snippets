@@ -9,8 +9,16 @@
         @apply border-r bg-slate-100 text-xs text-slate-700 overflow-y-auto;
         grid-area: categories;
 
-        .item {
-            @apply p-1 py-1 truncate cursor-pointer flex items-center gap-1;
+        a {
+            @apply px-2 py-1 truncate cursor-pointer block;
+
+            &:hover {
+                @apply bg-orange-300 text-white mx-1 rounded-md;
+            }
+
+            &.active {
+                @apply bg-orange-500 text-white mx-1 rounded-md;
+            }
         }
     }
 
