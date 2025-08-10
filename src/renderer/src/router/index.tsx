@@ -1,4 +1,5 @@
 import Category from '@renderer/pages/Category'
+import categoryLoader from '@renderer/pages/Category/categoryLoader'
 import Config from '@renderer/pages/Config'
 import Content from '@renderer/pages/Content'
 import Home from '@renderer/pages/Home'
@@ -16,6 +17,7 @@ const rotuer = createHashRouter([
       {
         path: '',
         element: <Category />,
+        loader: categoryLoader,
         children: [
           {
             index: true,

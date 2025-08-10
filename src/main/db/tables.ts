@@ -1,4 +1,5 @@
 import { db } from './connect'
+import { Random } from 'mockjs'
 
 db.exec(`
 create table if not exists categories (
@@ -18,12 +19,15 @@ create table if not exists contents (
 );
 `)
 
-db.exec(`
-insert into categories(name, created_at) values
-    ('test', datetime());
-`)
+for (let i = 0; i < 10; i++) {
+  const name = Random.title(5, 10)
+  db.exec(`
+    insert into categories(name, created_at) values
+        ('${name}', datetime());
+    `)
+}
 
-db.exec(`
-insert into contents(title, content, category_id, created_at) values
-    ('react', 'zustand', 1, datetime());
-`)
+// db.exec(`
+// insert into contents(title, content, category_id, created_at) values
+//     ('react', 'zustand', 1, datetime());
+// `)

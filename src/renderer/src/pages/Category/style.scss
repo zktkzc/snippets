@@ -6,8 +6,12 @@
     'nav content' 30px/100px auto;
 
     .categories {
-        @apply border-r bg-slate-100 text-sm text-slate-700;
+        @apply border-r bg-slate-100 text-xs text-slate-700 overflow-y-auto;
         grid-area: categories;
+
+        .item {
+            @apply p-1 py-1 truncate cursor-pointer flex items-center gap-1;
+        }
     }
 
     .nav {

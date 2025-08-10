@@ -1,11 +1,11 @@
 import { db } from '../db/connect'
 
 const findAll = (sql: string) => {
-  db.prepare(sql).all()
+  return db.prepare(sql).all()
 }
 
 const findOne = (sql: string) => {
-  db.prepare(sql).get()
+  return db.prepare(sql).get()
 }
 
 const insert = (sql: string) => {
