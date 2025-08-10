@@ -22,6 +22,8 @@ export function createWindow(): BrowserWindow {
     }
   })
 
+  // mainWindow.setIgnoreMouseEvents(true, { forward: true })
+
   ipc.registerIpc(mainWindow)
 
   mainWindow.webContents.openDevTools()
