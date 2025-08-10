@@ -7,13 +7,13 @@ import url from 'node:url'
 export function createWindow(): BrowserWindow {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 600,
-    height: 500,
+    title: '软件配置',
+    width: 1250,
+    height: 750,
     center: true,
     show: false,
     alwaysOnTop: true,
     autoHideMenuBar: true,
-    resizable: false,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
