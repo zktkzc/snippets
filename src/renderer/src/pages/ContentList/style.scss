@@ -1,21 +1,21 @@
-.content-page {
+.contentList-page {
     @apply h-screen text-sm text-slate-700;
     display: grid;
-    grid-template: 'list content' auto/150px auto;
+    grid-template: 'list content' auto/250px auto;
 
     .list {
-        @apply bg-slate-50 border-r cursor-pointer;
+        @apply bg-slate-50 border-r cursor-pointer overflow-y-auto;
         grid-area: list;
 
         a {
-            @apply truncate block py-1 px-1;
+            @apply truncate py-1 px-1 flex items-center gap-1 border-b mx-2;
 
             &:hover {
                 @apply bg-orange-300 text-white mx-1 rounded-md;
             }
             
             &.active {
-                @apply bg-orange-500 text-white mx-1 rounded-md;
+                @apply bg-orange-500 text-white mx-1 rounded-md font-bold;
             }
         }
     }

@@ -7,6 +7,7 @@ type CategoryType = {
 type ContentType = {
   id: number
   title: string
+  category_id: number
   content: string
   created_at: string
 }
