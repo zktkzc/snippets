@@ -11,6 +11,8 @@ export default function Content() {
       <div className="content-page" key={content.id}>
         <input
           name="title"
+          placeholder="请输入标题..."
+          autoFocus
           defaultValue={content.title}
           onChange={(e) => {
             submit(e.target.form)
@@ -18,6 +20,7 @@ export default function Content() {
         />
         <textarea
           name="content"
+          placeholder="请输入频段内容..."
           defaultValue={content.content}
           onChange={(e) => {
             submit(e.target.form)

@@ -43,7 +43,7 @@ export const ContentList = () => {
           <NavLink
             to={`/config/category/contentList/${content.category_id}/content/${content.id}`}
             key={content.id}
-            className={({ isActive }) => (isActive ? 'active' : '')}
+            className="flex items-center justify-between"
           >
             <div className="truncate">{content.title}</div>
             <div className="text-[10px] opacity-80">
