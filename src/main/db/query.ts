@@ -1,7 +1,7 @@
 import { db } from '../db/connect'
 
-const findAll = (sql: string) => {
-  return db.prepare(sql).all()
+const findAll = (sql: string, params: Record<string, any>) => {
+  return db.prepare(sql).all(params)
 }
 
 const findOne = (sql: string) => {

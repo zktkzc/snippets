@@ -1,6 +1,5 @@
 import { Form, useLoaderData, useSubmit } from 'react-router-dom'
 import './style.scss'
-import { Button } from 'antd'
 import { ContentType } from 'types'
 
 export default function Content() {
