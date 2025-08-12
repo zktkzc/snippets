@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+import { SqlActionType } from '../../types'
 
 // Custom APIs for renderer
 const api = {
@@ -15,8 +16,8 @@ const api = {
   openConfigWindow() {
     ipcRenderer.send('openConfigWindow')
   },
-  sql(sql: string, type: SqlActionType) {
-    return ipcRenderer.invoke('sql', sql, type)
+  sql(sql: string, type: SqlActionType, params = {}) {
+    return ipcRenderer.invoke('sql', sql, type, params)
   }
 }
 

@@ -2,7 +2,6 @@ import { is } from '@electron-toolkit/utils'
 import { BrowserWindow, shell } from 'electron'
 import { join } from 'path'
 import icon from '../../../resources/icon.png?asset'
-import * as ipc from './ipc'
 
 export function createWindow(): BrowserWindow {
   // Create the browser window.

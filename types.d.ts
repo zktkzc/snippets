@@ -1,10 +1,10 @@
-type SqlActionType = 'findAll' | 'findOne' | 'insert' | 'update' | 'del'
-type CategoryType = {
+export type SqlActionType = 'findAll' | 'findOne' | 'insert' | 'update' | 'del'
+export type CategoryType = {
   id: number
   name: string
   created_at: string
 }
-type ContentType = {
+export type ContentType = {
   id: number
   title: string
   category_id: number

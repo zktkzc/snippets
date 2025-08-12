@@ -1,17 +1,10 @@
-import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
 import './style.scss'
-import { useEffect } from 'react'
 import dayjs from 'dayjs'
+import { ContentType } from 'types'
 
 export default function ContentList() {
   const contents = useLoaderData() as ContentType[]
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (contents.length) {
-      navigate(`/config/category/contentList/${contents[0].category_id}/content/${contents[0].id}`)
-    }
-  }, [contents])
 
   return (
     <main className="contentList-page">
@@ -23,7 +16,9 @@ export default function ContentList() {
             className={({ isActive }) => (isActive ? 'active' : '')}
           >
             <div className="truncate">{content.title}</div>
-            <div className="text-[10px] opacity-80">{dayjs(content.created_at).format('YYYY/MM/DD')}</div>
+            <div className="text-[10px] opacity-80">
+              {dayjs(content.created_at).format('YYYY/MM/DD')}
+            </div>
           </NavLink>
         ))}
       </div>

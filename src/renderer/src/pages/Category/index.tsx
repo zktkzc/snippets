@@ -1,15 +1,10 @@
-import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
 import './style.scss'
 import { Add, DatabaseSetting, FolderClose } from '@icon-park/react'
-import { useEffect } from 'react'
+import { CategoryType } from 'types'
 
 export default function Category() {
   const categories = useLoaderData() as CategoryType[]
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    navigate(`/config/category/contentList/${categories[0]?.id}`)
-  }, [categories])
 
   return (
     <main className="category-page">

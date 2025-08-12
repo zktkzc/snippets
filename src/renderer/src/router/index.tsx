@@ -4,6 +4,7 @@ import Config from '@renderer/pages/Config'
 import Content from '@renderer/pages/Content'
 import contentLoader from '@renderer/pages/Content/contentLoader'
 import ContentList from '@renderer/pages/ContentList'
+import contentAction from '@renderer/pages/ContentList/contentAction'
 import contentListLoader from '@renderer/pages/ContentList/contentListLoader'
 import Home from '@renderer/pages/Home'
 import { createHashRouter } from 'react-router-dom'
@@ -30,6 +31,7 @@ const rotuer = createHashRouter([
               {
                 path: 'content/:id',
                 loader: contentLoader,
+                action: contentAction,
                 element: <Content />
               }
             ]

@@ -4,7 +4,7 @@
     grid-template: 'list content' auto/250px auto;
 
     .list {
-        @apply bg-slate-50 border-r cursor-pointer overflow-y-auto;
+        @apply border-r cursor-pointer overflow-y-auto;
         grid-area: list;
 
         a {

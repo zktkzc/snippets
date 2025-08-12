@@ -17,7 +17,7 @@
             }
 
             &.active {
-                @apply bg-orange-500 text-white mx-1 rounded-md;
+                @apply bg-orange-500 text-white mx-1 rounded-md font-bold;
             }
         }
     }
