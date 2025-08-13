@@ -1,0 +1,17 @@
+@mixin commonLink {
+    @apply truncate py-[6px] px-1 flex items-center justify-between gap-1 border-b mx-2 my-1;
+}
+
+.link {
+    @include commonLink();
+
+    &:hover {
+        @include commonLink();
+        @apply bg-orange-100 rounded-md;
+    }
+}
+
+.active {
+    @include commonLink();
+    @apply bg-orange-500 text-white rounded-md font-bold border-none;
+}

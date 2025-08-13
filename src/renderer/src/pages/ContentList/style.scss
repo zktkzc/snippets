@@ -6,18 +6,6 @@
     .list {
         @apply border-r cursor-pointer overflow-y-auto;
         grid-area: list;
-
-        a {
-            @apply truncate py-1 px-1 flex items-center gap-1 border-b mx-2 my-1;
-
-            &:hover {
-                @apply bg-orange-300 text-white rounded-md;
-            }
-            
-            &.active {
-                @apply bg-orange-500 text-white rounded-md font-bold;
-            }
-        }
     }
 
     .content {

@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import { useContextMenu } from 'mantine-contextmenu'
 import { NavLink, useSubmit } from 'react-router-dom'
 import { ContentType } from 'types'
+import style from './style.module.scss'
 
 interface Props {
   content: ContentType
@@ -16,7 +17,7 @@ export const ContentItem = ({ content }: Props) => {
     <NavLink
       to={`/config/category/contentList/${content.category_id}/content/${content.id}`}
       key={content.id}
-      className="flex items-center justify-between"
+      className={({ isActive }) => (isActive ? style.active : style.link)}
       onContextMenu={showContextMenu(
         [
           {

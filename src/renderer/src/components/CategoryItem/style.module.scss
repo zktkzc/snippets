@@ -1,0 +1,17 @@
+@mixin commonLink {
+    @apply px-2 py-2 truncate cursor-pointer mx-1 my-1 block;
+}
+
+.link {
+    @include commonLink();
+
+    &:hover {
+        @include commonLink();
+        @apply bg-orange-100 rounded-md;
+    }
+}
+
+.active {
+    @include commonLink();
+    @apply bg-orange-500 text-white rounded-md font-bold;
+}
