@@ -2,11 +2,13 @@ import { NavLink, Outlet, useLoaderData, useSubmit, Form } from 'react-router-do
 import './style.scss'
 import dayjs from 'dayjs'
 import { ContentType } from 'types'
-import { Add, Search } from '@icon-park/react'
+import { Add, Delete, Search } from '@icon-park/react'
+import { useContextMenu } from 'mantine-contextmenu'
 
 export const ContentList = () => {
   const contents = useLoaderData() as ContentType[]
   const submit = useSubmit()
+  const { showContextMenu } = useContextMenu()
 
   return (
     <main className="contentList-page">
@@ -34,7 +36,7 @@ export const ContentList = () => {
               strokeWidth={3}
               className="mr-2 cursor-pointer"
               onClick={() => {
-                submit({ action: 'add' }, { method: 'post' })
+                submit(null, { method: 'POST' })
               }}
             />
           </div>
@@ -44,6 +46,19 @@ export const ContentList = () => {
             to={`/config/category/contentList/${content.category_id}/content/${content.id}`}
             key={content.id}
             className="flex items-center justify-between"
+            onContextMenu={showContextMenu(
+              [
+                {
+                  key: 'remove',
+                  title: '删除片段',
+                  icon: <Delete theme="outline" size={18} strokeWidth={3} />,
+                  onClick: () => {
+                    submit({ id: content.id }, { method: 'DELETE' })
+                  }
+                }
+              ],
+              { className: 'contextMenu' }
+            )}
           >
             <div className="truncate">{content.title}</div>
             <div className="text-[10px] opacity-80">

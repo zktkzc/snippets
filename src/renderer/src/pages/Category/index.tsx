@@ -16,6 +16,12 @@ export default function Category() {
             <div className="truncate">所有片段</div>
           </div>
         </NavLink>
+        <NavLink to={`/config/category/contentList/0`} end className="font-bold mb-2">
+          <div className="flex items-center gap-1">
+            <AllApplication theme="outline" size="12" strokeWidth={3} />
+            <div className="truncate">未分类</div>
+          </div>
+        </NavLink>
         <div className="px-2 mt-2 opacity-90 mb-1">具体分类</div>
         {categories.map((category) => (
           <NavLink to={`/config/category/contentList/${category.id}`} key={category.id}>

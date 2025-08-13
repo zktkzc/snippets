@@ -1,3 +1,3 @@
 export default async () => {
-  return await window.api.sql('select * from categories;', 'findAll')
+  return await window.api.sql('select * from categories order by id desc;', 'findAll')
 }
