@@ -36,7 +36,7 @@ export default function Content() {
         </select>
         <textarea
           name="content"
-          placeholder="请输入频段内容..."
+          placeholder="请输入片段内容..."
           defaultValue={content.content}
           onChange={(e) => {
             submit(e.target.form)

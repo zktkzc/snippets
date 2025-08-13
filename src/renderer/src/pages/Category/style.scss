@@ -10,14 +10,14 @@
         grid-area: categories;
 
         a {
-            @apply px-2 py-1 truncate cursor-pointer block;
+            @apply px-2 py-1 truncate cursor-pointer mx-1 block;
 
             &:hover {
-                @apply bg-orange-300 text-white mx-1 rounded-md;
+                @apply bg-orange-300 text-white rounded-md;
             }
 
             &.active {
-                @apply bg-orange-500 text-white mx-1 rounded-md font-bold;
+                @apply bg-orange-500 text-white rounded-md font-bold;
             }
         }
     }
