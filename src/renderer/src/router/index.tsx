@@ -10,6 +10,7 @@ import contentListLoader from '@renderer/pages/ContentList/contentListLoader'
 import Home from '@renderer/pages/Home'
 import { Welcome } from '@renderer/pages/Welcome'
 import { createHashRouter } from 'react-router-dom'
+import categoryAction from '@renderer/pages/Category/categoryAction'
 
 const rotuer = createHashRouter([
   {
@@ -24,6 +25,7 @@ const rotuer = createHashRouter([
         path: 'category',
         element: <Category />,
         loader: categoryLoader,
+        action: categoryAction,
         children: [
           {
             path: 'contentList/:cid?',
