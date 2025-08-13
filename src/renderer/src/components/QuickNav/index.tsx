@@ -5,7 +5,7 @@ import style from './style.module.scss'
 export const QuickNav = () => {
   return (
     <main className="mb-3 border-b">
-      <div className="px-2 mt-2 opacity-90 mb-1 text-[10px]">快捷操作</div>
+      <div className="px-2 mt-2 opacity-90 mb-1 text-[10px] font-bold">快捷操作</div>
       <NavLink
         to={`/config/category/contentList`}
         end

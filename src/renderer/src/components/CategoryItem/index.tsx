@@ -1,20 +1,19 @@
-import { Delete, FolderClose } from '@icon-park/react'
-import { NavLink, useFetcher, useSubmit } from 'react-router-dom'
+import { FolderClose } from '@icon-park/react'
+import { NavLink, useFetcher } from 'react-router-dom'
 import { CategoryType } from 'types'
 import style from './style.module.scss'
-import { useContextMenu } from 'mantine-contextmenu'
 import { useStore } from '@renderer/store/useStore'
+import { useCategory } from '@renderer/hooks/useCategory'
 
 interface Props {
   category: CategoryType
 }
 
 export const CategoryItem = ({ category }: Props) => {
-  const { showContextMenu } = useContextMenu()
-  const submit = useSubmit()
   const fetcher = useFetcher()
   const editCategoryId = useStore((store) => store.editCategoryId)
   const setEditCategoryId = useStore((store) => store.setEditCategoryId)
+  const { contextMenu, dragHandle } = useCategory(category)
 
   return (
     <>
@@ -30,6 +29,10 @@ export const CategoryItem = ({ category }: Props) => {
                 setEditCategoryId(0)
               }
             }}
+            onBlur={(e) => {
+              fetcher.submit({ id: category.id, name: e.currentTarget.value }, { method: 'PUT' })
+              setEditCategoryId(0)
+            }}
           />
         </div>
       ) : (
@@ -38,19 +41,8 @@ export const CategoryItem = ({ category }: Props) => {
           key={category.id}
           className={({ isActive }) => (isActive ? style.active : style.link)}
           onDoubleClick={(e) => setEditCategoryId(category.id)}
-          onContextMenu={showContextMenu(
-            [
-              {
-                key: 'remove',
-                title: '删除分类',
-                icon: <Delete theme="outline" size={18} strokeWidth={3} />,
-                onClick: () => {
-                  submit({ id: category.id }, { method: 'DELETE' })
-                }
-              }
-            ],
-            { className: 'contextMenu' }
-          )}
+          onContextMenu={contextMenu()}
+          {...dragHandle}
         >
           <div className="flex items-center gap-1">
             <FolderClose theme="outline" size="12" strokeWidth={3} />
