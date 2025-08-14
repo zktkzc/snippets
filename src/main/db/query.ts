@@ -1,3 +1,4 @@
+import { ConfigType } from '../../../types'
 import { db } from '../db/connect'
 
 const findAll = (sql: string, params: Record<string, any>) => {
@@ -20,4 +21,9 @@ const del = (sql: string, params: Record<string, any>) => {
   return db.prepare(sql).run(params).changes
 }
 
-export { findAll, findOne, insert, update, del }
+const config = () => {
+  const res = findOne('select * from config where id=1;') as ConfigType
+  return JSON.parse(res.content)
+}
+
+export { findAll, findOne, insert, update, del, config }

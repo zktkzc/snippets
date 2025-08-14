@@ -11,5 +11,13 @@
         h5 {
             @apply text-xs font-bold mb-2 text-slate-700 opacity-90;
         }
+
+        div {
+            @apply flex items-center justify-between gap-2;
+
+            input {
+                @apply border flex-1 outline-none text-center; 
+            }
+        }
     }
 }

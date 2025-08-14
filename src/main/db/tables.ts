@@ -20,9 +20,21 @@ create table if not exists contents (
 );
 `)
 
+db.exec(`
+  create table if not exists config (
+      id integer primary key autoincrement not null,
+      content text not null
+  );
+  `)
+
 function initData() {
   const isInit = findOne('select * from contents;')
   if (isInit) return
+
+  db.exec(
+    `insert into config(content) values('{"shortCut":"Alt+Space","databaseDirectory":"abc"}');`
+  )
+
   for (let i = 1; i < 10; i++) {
     const name = Random.title(5, 10)
     db.exec(`

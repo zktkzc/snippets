@@ -12,6 +12,8 @@ import { Welcome } from '@renderer/pages/Welcome'
 import { createHashRouter } from 'react-router-dom'
 import categoryAction from '@renderer/pages/Category/categoryAction'
 import { Setting } from '@renderer/pages/Setting'
+import SettingAction from '@renderer/pages/Setting/SettingAction'
+import SettingLoader from '@renderer/pages/Setting/SettingLoader'
 
 const rotuer = createHashRouter([
   {
@@ -24,6 +26,8 @@ const rotuer = createHashRouter([
     children: [
       {
         index: true,
+        action: SettingAction,
+        loader: SettingLoader,
         element: <Setting />
       },
       {

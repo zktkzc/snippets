@@ -3,13 +3,15 @@ import { electronApp, optimizer } from '@electron-toolkit/utils'
 import './windows'
 import './ipc'
 import './db'
-import './shortCut'
+import { registerAppGlobalShortCut } from './shortCut'
 import { getWindowByName } from './windows'
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  registerAppGlobalShortCut()
+
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 

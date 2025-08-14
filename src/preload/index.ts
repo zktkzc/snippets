@@ -11,8 +11,8 @@ const api = {
   hideWindow: (name: WindowNameType) => {
     ipcRenderer.send('hideWindow', name)
   },
-  shortCut: (type: 'search', shortCut: string) => {
-    return ipcRenderer.invoke('shortCut', type, shortCut)
+  shortCut: (shortCut: string) => {
+    return ipcRenderer.invoke('shortCut', shortCut)
   },
   setIgnoreMouseEvents(ignore: boolean, options?: { forward: boolean }) {
     ipcRenderer.send('setIgnoreMouseEvents', ignore, options)
