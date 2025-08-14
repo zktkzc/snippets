@@ -1,11 +1,15 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 import { SqlActionType } from '../../types'
+import { WindowNameType } from '../main/windows'
 
 // Custom APIs for renderer
 const api = {
-  hideWindow: () => {
-    ipcRenderer.send('hideWindow')
+  openWindow: (name: WindowNameType) => {
+    ipcRenderer.send('openWindow', name)
+  },
+  hideWindow: (name: WindowNameType) => {
+    ipcRenderer.send('hideWindow', name)
   },
   shortCut: (type: 'search', shortCut: string) => {
     return ipcRenderer.invoke('shortCut', type, shortCut)

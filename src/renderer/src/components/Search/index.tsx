@@ -26,7 +26,7 @@ export default function Search() {
           fill="#34495e"
           strokeWidth={4}
           className="cursor-pointer"
-          onClick={() => window.api.openConfigWindow()}
+          onClick={() => window.api.openWindow('config')}
         />
         <Input autoFocus value={search} onChange={handleSearch} />
       </section>

@@ -1,19 +1,18 @@
 import { app, BrowserWindow, globalShortcut, ipcMain, IpcMainInvokeEvent } from 'electron'
+import { getWindowByName } from './windows'
 
 const config = {
   search: ''
 }
 
-export const registerShortCut = (win: BrowserWindow) => {
-  ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, type: 'search', shortCut: string) => {
-    switch (type) {
-      case 'search':
-        if (config.search) globalShortcut.unregister(config.search)
-        config.search = shortCut
-        return registerSearchShortCut(win, shortCut)
-    }
-  })
-}
+ipcMain.handle('shortCut', (_event: IpcMainInvokeEvent, type: 'search', shortCut: string) => {
+  switch (type) {
+    case 'search':
+      if (config.search) globalShortcut.unregister(config.search)
+      config.search = shortCut
+      return registerSearchShortCut(getWindowByName('search'), shortCut)
+  }
+})
 
 function registerSearchShortCut(win: BrowserWindow, shortCut: string) {
   return globalShortcut.register(shortCut, () => {
