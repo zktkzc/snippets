@@ -40,7 +40,7 @@ export const CategoryItem = ({ category }: Props) => {
           to={`/config/category/contentList/${category.id}`}
           key={category.id}
           className={({ isActive }) => (isActive ? style.active : style.link)}
-          onDoubleClick={(e) => setEditCategoryId(category.id)}
+          onDoubleClick={() => setEditCategoryId(category.id)}
           onContextMenu={contextMenu()}
           {...dragHandle}
         >

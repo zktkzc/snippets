@@ -1,13 +1,21 @@
 import Database, * as BetterSqlite3 from 'better-sqlite3'
 import { app } from 'electron'
-import { resolve, dirname } from 'path'
+import { resolve, dirname, join } from 'path'
 import fs from 'fs'
+import config from './config'
 
-const file = resolve(app.getPath('home'), 'snippets', 'data.db')
-if (!fs.existsSync(file)) {
-  fs.mkdirSync(dirname(file), { recursive: true })
+const db = (): BetterSqlite3.Database => {
+  let dir = resolve(app.getPath('home'), 'snippets')
+  if (config.databaseDirectory && fs.existsSync(config.databaseDirectory)) {
+    dir = config.databaseDirectory
+  }
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dirname(dir), { recursive: true })
+  }
+  const db: BetterSqlite3.Database = new Database(join(dir, 'data.db'), {})
+  db.pragma('journal_mode = WAL')
+
+  return db
 }
-const db: BetterSqlite3.Database = new Database(file, {})
-db.pragma('journal_mode = WAL')
 
 export { db }

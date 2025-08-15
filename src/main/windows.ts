@@ -1,24 +1,38 @@
 import { app, BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron'
 import { createWindow, OptionsType } from './createWindow'
 
-export type WindowNameType = 'search' | 'config'
+export type WindowNameType = 'search' | 'config' | 'code'
 
 export const config = {
   search: {
     id: 0,
     options: {
-      hash: ''
+      hash: '',
+      initShow: true
+    }
+  },
+  code: {
+    id: 0,
+    options: {
+      initShow: false,
+      width: 1300,
+      height: 700,
+      frame: true,
+      transparent: false,
+      resizable: true,
+      hash: '/#config/category/contentList'
     }
   },
   config: {
     id: 0,
     options: {
-      width: 1300,
-      height: 600,
+      initShow: false,
+      width: 500,
+      height: 350,
       frame: true,
       transparent: false,
       resizable: true,
-      hash: '/#config/category/contentList'
+      hash: '/#config'
     }
   }
 } as Record<WindowNameType, { id: number; options: OptionsType }>
@@ -38,4 +52,5 @@ export const getWindowByEvent = (event: IpcMainEvent | IpcMainInvokeEvent) => {
 
 app.whenReady().then(() => {
   getWindowByName('search')
+  getWindowByName('config')
 })

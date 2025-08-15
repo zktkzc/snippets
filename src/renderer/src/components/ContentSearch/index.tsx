@@ -1,4 +1,5 @@
 import { Add, Search } from '@icon-park/react'
+import { Tooltip } from 'antd'
 import { Form, useSubmit } from 'react-router-dom'
 
 export const ContentSearch = () => {
@@ -21,16 +22,18 @@ export const ContentSearch = () => {
           className="outline-none text-sm font-bold py-2 w-full"
           onChange={(e) => submit(e.target.form)}
         />
-        <Add
-          theme="outline"
-          size="18"
-          fill="#000"
-          strokeWidth={3}
-          className="mr-2 cursor-pointer"
-          onClick={() => {
-            submit(null, { method: 'POST' })
-          }}
-        />
+        <Tooltip title="新建片段" placement="bottom">
+          <Add
+            theme="outline"
+            size="18"
+            fill="#000"
+            strokeWidth={3}
+            className="mr-2 cursor-pointer"
+            onClick={() => {
+              submit(null, { method: 'POST' })
+            }}
+          />
+        </Tooltip>
       </div>
     </Form>
   )

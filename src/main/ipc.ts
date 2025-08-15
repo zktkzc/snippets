@@ -1,4 +1,4 @@
-import { ipcMain, IpcMainEvent } from 'electron'
+import { dialog, ipcMain, IpcMainEvent } from 'electron'
 import { getWindowByName, getWindowByEvent, WindowNameType } from './windows'
 
 ipcMain.on('openWindow', (_event: IpcMainEvent, name: WindowNameType) => {
@@ -15,3 +15,11 @@ ipcMain.on(
     getWindowByEvent(event).setIgnoreMouseEvents(ignore, options)
   }
 )
+
+ipcMain.handle('selectDatabaseDirectory', async () => {
+  const res = await dialog.showOpenDialog({
+    title: '选择数据所在目录',
+    properties: ['openDirectory', 'createDirectory']
+  })
+  return res.canceled ? '' : res.filePaths[0]
+})

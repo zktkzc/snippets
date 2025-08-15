@@ -8,8 +8,8 @@ const api = {
   openWindow: (name: WindowNameType) => {
     ipcRenderer.send('openWindow', name)
   },
-  hideWindow: (name: WindowNameType) => {
-    ipcRenderer.send('hideWindow', name)
+  closeWindow: (name: WindowNameType) => {
+    ipcRenderer.send('closeWindow', name)
   },
   shortCut: (shortCut: string) => {
     return ipcRenderer.invoke('shortCut', shortCut)
@@ -22,6 +22,15 @@ const api = {
   },
   sql(sql: string, type: SqlActionType, params = {}) {
     return ipcRenderer.invoke('sql', sql, type, params)
+  },
+  selectDatabaseDirectory: () => {
+    return ipcRenderer.invoke('selectDatabaseDirectory')
+  },
+  setDatabaseDirectory: (path: string) => {
+    ipcRenderer.send('setDatabaseDirectory', path)
+  },
+  initTable: () => {
+    ipcRenderer.send('initTable')
   }
 }
 
