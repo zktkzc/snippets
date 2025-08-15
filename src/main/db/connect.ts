@@ -10,7 +10,7 @@ const db = (): BetterSqlite3.Database => {
     dir = config.databaseDirectory
   }
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dirname(dir), { recursive: true })
+    fs.mkdirSync(dir, { recursive: true })
   }
   const db: BetterSqlite3.Database = new Database(join(dir, 'data.db'), {})
   db.pragma('journal_mode = WAL')

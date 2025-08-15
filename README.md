@@ -1,26 +1,36 @@
 # snippets
 
-An Electron application with React and TypeScript
+一个由Electron和React编写的文本片段管理软件，可以在任意软件中使用
 
-## Recommended IDE Setup
+# 软件截图
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+## 主界面
 
-## Project Setup
+![](./assets/主界面.png)
 
-### Install
+## 数据配置界面
+
+![](./assets/数据配置界面.png)
+
+## 软件设置界面
+
+![](./assets/软件设置界面.png)
+
+## 项目初始化
+
+### 安装
 
 ```bash
 $ npm install
 ```
 
-### Development
+### 开发
 
 ```bash
 $ npm run dev
 ```
 
-### Build
+### 编译
 
 ```bash
 # For windows
